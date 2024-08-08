@@ -4,30 +4,196 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .landing-page {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(270deg, #6a11cb, #2575fc, #6a11cb);
+            background-size: 600% 600%;
+            animation: gradient 15s ease infinite;
+            color: white;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .landing-page h1, .landing-page p {
+            animation: fadeIn 2s ease-out;
+        }
+
+        .nav-links {
+            margin-top: 20px;
+        }
+        .nav-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border: 2px solid white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .nav-links a:hover {
+            background: white;
+            color: #2575fc;
+        }
+
+        .typewriter {
+            display: inline;
+            overflow: hidden;
+            border-right: .15em solid orange;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: orange; }
+        }
+    </style>
 </head>
 <body>
-    <header class="bg-dark text-white text-center py-5">
-        <h1>Welcome to My Portfolio</h1>
-    </header>
-    <div class="container mt-5">
-        <section class="my-5 p-4 bg-light rounded shadow-sm">
-            <h2>About Me</h2>
-            <img src="Douglas_Rollman.jpg" alt="Douglas Rollman" class="rounded-circle mb-3" style="width: 150px;">
-            <p>Hello! I am Douglas Rollman, a passionate data scientist.</p>
-        </section>
-        <section class="my-5 p-4 bg-light rounded shadow-sm">
-            <h2>Projects</h2>
-            <p>Here are some of my projects:</p>
-            <ul>
-                <li>NYC Collisions</li>
-                <li>Gamma Distribution Sort</li>
-            </ul>
-        </section>
+    <div class="landing-page">
+        <h1>Hi! I'm Doug</h1>
+        <p><span id="typewriter" class="typewriter"></span></p>
+        <div class="nav-links">
+            <a href="#about">About Me</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
     </div>
-    <footer class="bg-dark text-white text-center py-3">
-        <p>Contact me at <a href="mailto:douglas.rollman07@myhunter.cuny.edu" class="text-white">douglas.rollman07@myhunter.cuny.edu</a></p>
-    </footer>
-</body>
-</html>
+    <div class="content">
+        <section id="about" class="my-5 p-4 bg-light rounded shadow-sm text-center">
+            <h2>About Me</h2>
+            <img src="images/Douglas_Rollman.jpg" alt="Douglas Rollman" class="rounded-circle mb-3" style="width: 150px;">
+            <div class="text-left">
+                <p>Hello! I am Douglas Rollman, a passionate data scientist from Westchester, New York. My interest in data science sparked during a data mining course at Hunter College, where I had a blast working on a creative project that involved cleaning a raw dataset and implementing several machine learning models. This experience solidified my love for data science and set me on a path to further my skills and knowledge in this exciting field.</p>
+                <p>I'm a current student at Hunter College pursuing a BA in Computer Science, where I particularly enjoyed courses in data science, computer theory, and mathematics. These courses provided a strong foundation in understanding complex algorithms and applying mathematical concepts to solve real-world problems.</p>
+                <p>While I don't have professional experience in data science, I am currently a TA for the CS 335 Data Structures and Algorithms course at Hunter College. In this role, I tutor students and help debug their projects, which has enhanced my understanding of data structures and algorithmic problem-solving.</p>
+                <p>I have honed my skills in machine learning, data visualization, exploratory data analysis, data preprocessing and cleaning, and feature engineering. I am proficient in using tools and technologies such as Jupyter Notebooks, Matplotlib, Scikit-learn, and C++.</p>
+                <p>In addition to my coursework at Hunter College, I was accepted, and am currently enrolled, in the competitive data science course offered by CUNY Tech Prep. These experiences have broadened my knowledge and equipped me with cutting-edge skills in the field.</p>
+                <p>Looking ahead, I am eager to continue growing as a data scientist and to contribute to impactful projects that leverage data to solve real-world problems.</p>
+            </div>
+        </section>
+            <section id="projects" class="my-5 p-4 bg-light rounded shadow-sm">
+                <h2>Projects</h2>
+                <div id="accordion">
+                    <!-- Project 1 -->
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Collision Analysis
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                <p><strong>Description:</strong> This project involved a comprehensive analysis of a dataset containing over 2.1 million vehicle collisions in New York City since 2012. The goal was to uncover patterns and identify key areas of interest related to collisions caused by factors such as poor road conditions, driving under the influence, adverse weather, and general hazards. To achieve this, I employed K-Means Clustering to group collision data into distinct clusters based on these contributing factors.</p>
+                                <p>The project began with extensive data cleaning, where I wrote a program using regular expressions to correct common misspellings and inconsistencies in the raw dataset. Additionally, I utilized APIs for geolocation and reverse geolocation to address missing values in the spatial data. Significant feature engineering was carried out, including creating features related to holidays, discretizing time series data (e.g., day of the week, week/month of the year), and integrating weather and vehicle information from related datasets.</p>
+                                <p>I also visualized the data to identify and highlight trends and patterns, providing valuable insights into collision hotspots and contributing factors. This analysis aimed to enhance understanding of collision dynamics and support targeted interventions to improve road safety.</p>
+                                <p><strong>Technologies Used:</strong> Python, Pandas, Scikit-learn (K-Means Clustering), Regular Expressions, APIs (for geolocation), Matplotlib, Seaborn, Jupyter Notebooks.</p>
+                                <p><strong>Outcome/Impact:</strong> The project provided actionable insights into high-risk areas and contributing factors for vehicle collisions in NYC. The findings were instrumental in identifying patterns related to road conditions, driver behavior, and weather impacts, which could be used to inform policy decisions and improve road safety measures. The data cleaning and feature engineering processes also significantly enhanced the quality and usability of the dataset for future analyses.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more projects here -->
+                </div>
+            </section>
+            <section id="contact" class="my-5 p-4 bg-light rounded shadow-sm">
+                <h2>Contact</h2>
+                <p>Check out my GitHub or connect with me on Linkedin!:</p>
+                <div class="button-container">
+                    <a href="https://github.com/DouglasRollman" target="_blank" class="btn btn-primary">GitHub</a>
+                    <a href="https://www.linkedin.com/in/dougrollman/" target="_blank" class="btn btn-primary">LinkedIn</a>
+                </div>
+            </section>
+            <footer class="bg-dark text-white text-center py-3">
+                <p>© 2024 Douglas Rollman. All rights reserved.</p>
+            </footer>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', (event) => {
+                const words = ["Data Scientist.", "Math Nerd.", "AI Aficionado.", "Machine Learning Maestro.", "Statistics Savant.", "Deep Learning Devotee."];
+                let i = 0;
+                let timer;
+    
+                function typingEffect() {
+                    let word = words[i].split("");
+                    let loopTyping = function() {
+                        if (word.length > 0) {
+                            document.getElementById('typewriter').innerHTML += word.shift();
+                        } else {
+                            deletingEffect();
+                            return false;
+                        };
+                        timer = setTimeout(loopTyping, 200);
+                    };
+                    loopTyping();
+                };
+    
+                function deletingEffect() {
+                    let word = words[i].split("");
+                    let loopDeleting = function() {
+                        if (word.length > 0) {
+                            word.pop();
+                            document.getElementById('typewriter').innerHTML = word.join("");
+                        } else {
+                            if (words.length > (i + 1)) {
+                                i++;
+                            } else {
+                                i = 0;
+                            };
+                            typingEffect();
+                            return false;
+                        };
+                        timer = setTimeout(loopDeleting, 100);
+                    };
+                    loopDeleting();
+                };
+    
+                typingEffect();
+            });
+        </script>
+    </body>
+    </html>
+
